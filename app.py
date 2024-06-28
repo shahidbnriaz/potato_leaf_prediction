@@ -5,7 +5,7 @@ import numpy as np
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model_url = 'https://github.com/shahidbnriaz/potato_leaf_prediction/raw/main/model.keras'
+    model_url = 'model.keras'
     try:
         response = requests.get(model_url)
         response.raise_for_status()  # Raise an exception for 4xx/5xx errors
