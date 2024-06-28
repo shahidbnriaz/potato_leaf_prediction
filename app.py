@@ -3,32 +3,9 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 
-@st.cache(allow_output_mutation=True)
-def load_model():
-    model_url = 'model.keras'
-    try:
-        response = requests.get(model_url)
-        response.raise_for_status()  # Raise an exception for 4xx/5xx errors
-        model_file = BytesIO(response.content)
-        model = tf.keras.models.load_model(model_file)
-        return model
-    except requests.exceptions.RequestException as e:
-        st.error(f"Error fetching model from GitHub: {e}")
-        return None
-
-# Load the model
-model = load_model()
-
-if model is not None:
-    # Now you can use the model in your Streamlit app
-    # Example:
-    # prediction = model.predict(input_data)
-    st.write("Model loaded successfully!")
-else:
-    st.write("Failed to load the model. Check the logs for details.")
-
+model = tf.keras.models.load_model('model.keras')
 # Define class names
-class_names = ['Class1', 'Class2', 'Class3']  # Replace with your actual class names
+class_names = ['Potato___Early_blight', 'Potato___healthy', 'Potato___Late_blight']  # Replace with your actual class names
 
 def predict(image):
     image = np.array(image)
