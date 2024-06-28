@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 
 # Load the model
-model = tf.keras.models.load_model('model.keras')
+model = tf.keras.models.load_model('main/model.keras')
 
 # Define class names
 class_names = ['Class1', 'Class2', 'Class3']  # Replace with your actual class names
