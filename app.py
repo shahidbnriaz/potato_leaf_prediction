@@ -3,8 +3,15 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 
+def load_model():
+    model_url = 'https://github.com/shahidbnriaz/potato_leaf_prediction/raw/main/model.keras'
+    response = requests.get(model_url)
+    model_file = BytesIO(response.content)
+    model = tf.keras.models.load_model(model_file)
+    return model
+
 # Load the model
-model = tf.keras.models.load_model('main/model.keras')
+model = load_model()
 
 # Define class names
 class_names = ['Class1', 'Class2', 'Class3']  # Replace with your actual class names
